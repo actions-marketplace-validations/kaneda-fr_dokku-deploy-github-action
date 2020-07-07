@@ -34,4 +34,5 @@ runs:
     - ${{ inputs.dokku-user }}
     - ${{ inputs.dokku-host }}
     - ${{ inputs.app-name }}
+    - ${{ inputs.remote-branch }}
     - ${{ inputs.git-push-flags }}
