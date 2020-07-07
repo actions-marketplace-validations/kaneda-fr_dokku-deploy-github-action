@@ -24,7 +24,7 @@ The Dokku app name to be deployed.
 
 ### remote-branch
 
-The branch to push on the remote repository. If not specified, `master` will be used.
+The ref (SHA, tag, branch) to push on the remote repository. If not specified, `master` will be used.
 
 ### git-push-flags
 
@@ -50,9 +50,26 @@ steps:
         fetch-depth: 0
   - id: deploy
     name: Deploy to dokku
-    uses: idoberko2/dokku-deploy-github-action@v1
+    uses: kaneda-fr/dokku-deploy-github-action@v1
     with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
         dokku-host: 'my-dokku-host.com'
         app-name: 'my-dokku-app'
+```
+
+To push a specfic ref (SHA, branch, tag):
+```
+steps:
+  - uses: actions/checkout@v2
+    with:
+        fetch-depth: 0
+  - id: deploy
+    name: Deploy to dokku
+    uses: kaneda-fr/dokku-deploy-github-action@v1
+    with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        dokku-host: 'my-dokku-host.com'
+        app-name: 'my-dokku-app'
+        remote-branch: ${{ github.sha }}
+        git-push-flags: "--force"
 ```

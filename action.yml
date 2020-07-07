@@ -1,6 +1,6 @@
 name: "Dokku Deploy action"
-author: "Ido Berkovich"
-description: "Deploy to a dokku instance using Github actions"
+author: "Sébastien Lacoste-Seris"
+description: "Deploy to a dokku instance using Github actions,inspired from action created by Ido Berkovich and enhanced to support deploying specific refs such as specific SHA commit."
 branding:
   icon: "upload-cloud"
   color: "green"
@@ -34,5 +34,4 @@ runs:
     - ${{ inputs.dokku-user }}
     - ${{ inputs.dokku-host }}
     - ${{ inputs.app-name }}
-    - ${{ inputs.remote-branch }}
     - ${{ inputs.git-push-flags }}
